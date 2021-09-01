@@ -9,14 +9,10 @@ export const entries = ['/send/details', '/send/confirm']
 
 export const SendModal = () => {
   const initialRef = useRef<HTMLInputElement>(null)
-  const modal = useModal()
+  const { send } = useModal()
+  const { close, isOpen } = send
   return (
-    <Modal
-      isOpen={modal.send}
-      onClose={() => modal.close('send')}
-      isCentered
-      initialFocusRef={initialRef}
-    >
+    <Modal isOpen={isOpen} onClose={() => close()} isCentered initialFocusRef={initialRef}>
       <ModalOverlay />
       <ModalContent>
         <MemoryRouter initialEntries={entries}>
